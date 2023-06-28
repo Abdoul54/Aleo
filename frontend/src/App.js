@@ -26,15 +26,15 @@ function Home() {
       <h1>Home Page</h1>
       <ul>
         {posts.map((post) => (
-          <a href={post.link} target="_blank" rel="noreferrer">
           <li key={post._id}>
-            <h2>{post.Title}</h2>
-            <p>{post.localisation}</p>
-            <p>{post.type}</p>
-            <p>{post.Price}</p>
-            <p>{post.platform}</p>
+            <a href={post.link} target="_blank" rel="noreferrer">
+              <h2>{post.Title}</h2>
+              <p>{post.localisation}</p>
+              <p>{post.type}</p>
+              <p>{post.Price}</p>
+              <p>{post.platform}</p>
+            </a>
           </li>
-        </a>
         ))}
       </ul>
     </div>
@@ -75,15 +75,15 @@ function Search() {
       </form>
       <ul>
         {searchResults.map((post) => (
-          <a href={post.link} target="_blank" rel="noreferrer">
-            <li key={post._id}>
+          <li key={post._id}>
+            <a href={post.link} target="_blank" rel="noreferrer">
               <h2>{post.Title}</h2>
               <p>{post.localisation}</p>
               <p>{post.type}</p>
-              <p>{post.Price}</p>
+              <p>{post.Price === 0 ? 'Not Defined' : post.Price}</p>
               <p>{post.platform}</p>
-            </li>
-          </a>
+            </a>
+          </li>
         ))}
       </ul>
     </div>
