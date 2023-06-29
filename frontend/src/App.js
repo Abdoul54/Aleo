@@ -2,7 +2,12 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import axios from "axios";
 import Landing from "./Landing";
-
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
 const API_BASE_URL = "http://localhost:5000/api";
 
 function Home() {
@@ -23,20 +28,21 @@ function Home() {
 
   return (
     <div>
-      <h1>Home Page</h1>
-      <ul>
+      <h1 >Home Page</h1>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(25rem, 1fr))', gap: '1rem' }}>
         {posts.map((post) => (
-          <li key={post._id}>
-            <a href={post.link} target="_blank" rel="noreferrer">
-              <h2>{post.Title}</h2>
-              <p>{post.localisation}</p>
-              <p>{post.type}</p>
-              <p>{post.Price}</p>
-              <p>{post.platform}</p>
-            </a>
-          </li>
+          <div className="card" key={post._id}>
+            <div className="card-body">
+              <h4 className="card-title">{post.Title}</h4>
+              <p className="card-text">{post.localisation}</p>
+              <p className="card-text">{post.type}</p>
+              <p className="card-text">{post.Price} DHs</p>
+              <p className="card-text">{post.platform}</p>
+              <a href={post.link} target="_blank" rel="noreferrer" className="btn btn-primary">Visit Link</a>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
@@ -65,27 +71,29 @@ function Search() {
   return (
     <div>
       <h1>Search Page</h1>
-      <form onSubmit={handleSearchSubmit}>
+      <Form onSubmit={handleSearchSubmit} >
         <input
           type="text"
           value={searchQuery}
           onChange={handleSearchInputChange}
         />
-        <button type="submit">Search</button>
-      </form>
-      <ul>
+        <Button type="submit">Search</Button>
+      </Form>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(25rem, 1fr))', gap: '1rem' }}>
         {searchResults.map((post) => (
-          <li key={post._id}>
-            <a href={post.link} target="_blank" rel="noreferrer">
-              <h2>{post.Title}</h2>
-              <p>{post.localisation}</p>
-              <p>{post.type}</p>
-              <p>{post.Price === 0 ? 'Not Defined' : post.Price}</p>
-              <p>{post.platform}</p>
-            </a>
-          </li>
+          <div className="card" key={post._id}>
+            <div className="card-body">
+              <h4 className="card-title">{post.Title}</h4>
+              <p className="card-text">{post.localisation}</p>
+              <p className="card-text">{post.type}</p>
+              <p className="card-text">{post.Price} DHs</p>
+              <p className="card-text">{post.platform}</p>
+              <a href={post.link} target="_blank" rel="noreferrer" className="btn btn-primary">Visit Link</a>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
+
     </div>
   );
 }
@@ -93,29 +101,35 @@ function Search() {
 function App() {
   return (
     <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/home">Posts</Link>
-            </li>
-            <li>
-              <Link to="/search">Search</Link>
-            </li>
-          </ul>
-        </nav>
+      <Navbar expand="lg" className="bg-body-tertiary">
+        <Container fluid>
+          <Navbar.Toggle aria-controls="navbarScroll" />
+          <Navbar.Collapse id="navbarScroll">
+            <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll>
+              <Nav.Item>
+                <Link to="/" className="nav-link">Home</Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Link to="/home" className="nav-link">Posts</Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Link to="/search" className="nav-link">Search</Link>
+              </Nav.Item>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
 
+      <Container fluid>
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/home" element={<Home />} />
           <Route path="/search" element={<Search />} />
         </Routes>
-      </div>
+      </Container>
     </Router>
   );
 }
+
 
 export default App;
