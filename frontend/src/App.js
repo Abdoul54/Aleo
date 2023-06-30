@@ -71,15 +71,19 @@ function Search() {
   return (
     <div>
       <h1>Search Page</h1>
-      <Form onSubmit={handleSearchSubmit} >
-        <input
-          type="text"
-          value={searchQuery}
-          onChange={handleSearchInputChange}
-        />
-        <Button type="submit">Search</Button>
+      <Form onSubmit={handleSearchSubmit} className="d-flex" >
+        <div className="d-flex align-items-center">
+          <Form.Control
+            type="text"
+            value={searchQuery}
+            onChange={handleSearchInputChange}
+            placeholder="Search..."
+            className="me-2"
+          />
+          <Button type="submit" variant="outline-success">Search</Button>
+        </div>
       </Form>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(25rem, 1fr))', gap: '1rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(25rem, 1fr))', gap: '1rem' }}>
         {searchResults.map((post) => (
           <div className="card" key={post._id}>
             <div className="card-body">
