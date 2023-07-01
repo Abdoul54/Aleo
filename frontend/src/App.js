@@ -8,6 +8,7 @@ import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import './App.css';
 const API_BASE_URL = "http://localhost:5000/api";
 
 function Home() {
@@ -31,11 +32,7 @@ function Home() {
 			<Search setPosts={setPosts} />
 			<div
 				className="card"
-				style={{
-					display: "grid",
-					gridTemplateColumns: "repeat(auto-fill, minmax(25rem, 1fr))",
-					gap: "1rem",
-				}}
+
 			>
 				{posts.map((post) => (
 					<div className="card" key={post._id}>
@@ -101,7 +98,6 @@ function Search(props) {
 			<Form
 				onSubmit={handleSearchSubmit}
 				className="d-flex"
-				style={{ marginTop: "10px", marginBottom: "10px" }}
 			>
 				<div className="d-flex align-items-center" sticky="top">
 					<Form.Control
@@ -127,19 +123,15 @@ function Search(props) {
 					</Button>
 				</div>
 			</Form>
-			<div
-				style={{
-					display: "grid",
-					gridTemplateColumns: "repeat(auto-fill, minmax(20rem, 1fr))",
-					gap: "1rem",
-				}}
-			>
+			<div className="card">
 				{searchResults.map((post) => (
-					<div className="card" key={post._id}>
+					<div key={post._id}>
 						<img
 							src={post.image}
-							className="card-img-top custom-card-img-large"
+							className="card-img-top"
 							alt="..."
+							fluid
+							width={300} height={300}
 						/>
 						<div className="card-body">
 							<h4 className="card-title">{post.Title}</h4>
@@ -158,50 +150,49 @@ function Search(props) {
 								>
 									Visit Link
 								</a>
-								</div>
 							</div>
 						</div>
-					))}
-				</div>
+					</div>
+				))}
 			</div>
-		);
-	}
+		</div>
+	);
+}
 
-	function App() {
-		return (
-			<Router>
-				<Navbar expand="lg" className="bg-body-tertiary" sticky="top">
-					<Container fluid>
-						<Navbar.Toggle aria-controls="navbarScroll" />
-						<Navbar.Collapse id="navbarScroll">
-							<Nav
-								className="me-auto my-2 my-lg-0"
-								style={{ maxHeight: "100px" }}
-								navbarScroll
-							>
-								<Nav.Item>
-									<Link to="/" className="nav-link">
-										Home
-									</Link>
-								</Nav.Item>
-								<Nav.Item>
-									<Link to="/home" className="nav-link">
-										Posts
-									</Link>
-								</Nav.Item>
-							</Nav>
-						</Navbar.Collapse>
-					</Container>
-				</Navbar>
-
+function App() {
+	return (
+		<Router>
+			<Navbar expand="lg" className="bg-body-tertiary" sticky="top">
 				<Container fluid>
-					<Routes>
-						<Route path="/" element={<Landing />} />
-						<Route path="/home" element={<Home />} />
-					</Routes>
+					<Navbar.Toggle aria-controls="navbarScroll" />
+					<Navbar.Collapse id="navbarScroll">
+						<Nav
+							className="me-auto my-2 my-lg-0"
+							navbarScroll
+						>
+							<Nav.Item>
+								<Link to="/" className="nav-link">
+									Home
+								</Link>
+							</Nav.Item>
+							<Nav.Item>
+								<Link to="/home" className="nav-link">
+									Posts
+								</Link>
+							</Nav.Item>
+						</Nav>
+					</Navbar.Collapse>
 				</Container>
-			</Router>
-		);
-	}
+			</Navbar>
 
-	export default App;
+			<Container fluid>
+				<Routes>
+					<Route path="/" element={<Landing />} />
+					<Route path="/home" element={<Home />} />
+				</Routes>
+			</Container>
+		</Router>
+	);
+}
+
+export default App;
