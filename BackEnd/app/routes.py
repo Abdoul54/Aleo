@@ -15,8 +15,10 @@ def get_posts():
     results = database.getPost()
     return json.dumps(results, cls=JSONEncoder)
 
-@app.route('/api/search/<q>', methods=['GET'])
-def findposts(q):
-    results = database.findPost(q)
+@app.route('/api/search/<category>/<q>', methods=['GET'])
+def findposts(category, q):
+    print(category,q)
+    results = database.findPost(category,q)
+    
     return json.dumps(results, cls=JSONEncoder)
 

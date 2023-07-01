@@ -8,7 +8,7 @@ def ConnectDB():
 def getPost():  
   return list(ConnectDB()[0].Posts.find())
 
-def findPost(q):
+def findPost(Category, q):
   regex = re.compile(q, re.IGNORECASE)
   cursor = ConnectDB()[0].Posts.find(
         {"$or": [
@@ -17,7 +17,9 @@ def findPost(q):
             {"type": {"$regex": regex}}
         ]}
   )
-  return list(cursor)
+  posts = [post for post in cursor if post['Category'] == Category]
+
+  return list(posts)
 
 def DisconnectDB():
     ConnectDB()[1].close()
