@@ -1,0 +1,39 @@
+.local {
+    width: 500px;
+    color: blue;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-size: 10pt;
+}
+
+.price {
+    color: red;
+    font-size: larger;
+    font-size: 20pt;
+}
+
+.type {
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: gray;
+}
+
+.btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 36px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.btn1{
+    width: 55%;
+}
+
+.btn2{
+    border: none;
+    
+}
