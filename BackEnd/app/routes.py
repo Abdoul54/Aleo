@@ -1,3 +1,4 @@
+from flask import request
 from app import app
 from . import database
 from bson import ObjectId
@@ -18,7 +19,12 @@ def get_posts():
 @app.route('/api/search/<category>/<q>', methods=['GET'])
 def findposts(category, q):
     print(category,q)
-    results = database.findPost(category,q)
+    min_price = request.args.get('minPrice')
+    max_price = request.args.get('maxPrice')
+    type_filter = request.args.get('type')
+    localization_filter = request.args.get('localisation')
+
+    results = database.findPost(category, q, min_price, max_price, type_filter, localization_filter)
     
     return json.dumps(results, cls=JSONEncoder)
 

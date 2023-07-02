@@ -1,0 +1,90 @@
+from os.path import dirname
+
+from linkpreview.link import Link
+from linkpreview.preview import (
+    Generic,
+    OpenGraph,
+    TwitterCard,
+    Microdata,
+    JsonLd,
+)
+from linkpreview.helpers import LazyAttribute, titleize
+
+
+class LinkPreview:
+    def __init__(self, link: Link, parser: str = "html.parser"):
+        self.link = link
+        self.generic = Generic(link, parser)
+        self.opengraph = OpenGraph(link, parser)
+        self.twitter = TwitterCard(link, parser)
+        self.microdata = Microdata(link, parser)
+        self.jsonld = JsonLd(link, parser)
+        self.sources = (
+            self.opengraph,
+            self.twitter,
+            self.microdata,
+            self.jsonld,
+            self.generic,
+        )
+
+    def _find_attribute(self, name):
+        for obj in self.sources:
+            value = getattr(obj, name)
+            if value:
+                return value
+
+    @LazyAttribute
+    def site_name(self):
+        return self._find_attribute("site_name")
+
+    @LazyAttribute
+    def title(self):
+        return self._find_attribute("title")
+
+    @LazyAttribute
+    def description(self):
+        return self._find_attribute("description")
+
+    @LazyAttribute
+    def image(self):
+        return self._find_attribute("image")
+
+    @LazyAttribute
+    def absolute_image(self):
+        if not self.image:
+            return self.image
+
+        # is starts with url scheme
+        parts = self.image.split("://")
+        if len(parts) > 1 and self.image.startswith(parts[0]):
+            return self.image
+
+        link = self.link.copy()
+
+        if self.image.startswith("/"):
+            # image is located from root
+            link.path = self.image
+
+        elif link.path.endswith("/"):
+            # the link is a directory
+            link.path = "%s%s" % (link.path, self.image)
+
+        else:
+            # the link is a file
+            link.path = "%s/%s" % (dirname(link.path), self.image)
+
+        return link.url
+
+    @LazyAttribute
+    def force_title(self):
+        if self.title:
+            return self.title
+
+        if self.link.may_file:
+            exploded = self.link.path.split("/")[-1].split(".")
+            if len(exploded) > 1:
+                return titleize(".".join(exploded[:-1]))
+
+        link = self.link.copy()
+        link.netloc = link.netloc.split("@")[-1]
+        return link.url[len(self.link.scheme) + 3 :]
