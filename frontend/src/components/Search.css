@@ -22,7 +22,6 @@
     color: white;
     padding: 8px 36px;
     text-align: center;
-    display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
@@ -58,5 +57,21 @@
 }
 
 .mt-auto{
-    margin-top: 100px;
+    margin-top: 1000px;
+}
+
+.search:hover{
+    background-color: white;
+    border: 1px solid green;
+    color: green;
+}
+
+.position{
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.category{
+    margin-right: 5px;
+    margin-bottom: 5px;
 }

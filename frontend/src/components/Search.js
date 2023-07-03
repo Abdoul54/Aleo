@@ -5,11 +5,10 @@ import Form from "react-bootstrap/Form";
 import "./Search.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FiFilter, FiXCircle } from 'react-icons/fi';
-import { GiFilter, GiPositionMarker } from 'react-icons/gi';
+import { GiPositionMarker } from 'react-icons/gi';
+import { BiCategoryAlt } from 'react-icons/bi';
 const API_BASE_URL = "http://localhost:5000/api";
 
-
-// Usage
 
 function Search() {
     const [searchQuery, setSearchQuery] = useState("");
@@ -19,7 +18,7 @@ function Search() {
     const [maxPrice, setMaxPrice] = useState("");
     const [typeFilter, setTypeFilter] = useState("");
     const [localizationFilter, setLocalizationFilter] = useState("");
-    const [showFilters, setShowFilters] = useState(false); // New state variable
+    const [showFilters, setShowFilters] = useState(false);
 
     const searchPosts = async () => {
         try {
@@ -125,7 +124,7 @@ function Search() {
                 <Button
                     type="submit"
                     variant="outline-success"
-                    className="btn btn-success btn-lg btn-block btn2"
+                    className="btn btn-success btn-lg btn-block search"
                 >
                     Search
                 </Button>
@@ -150,35 +149,41 @@ function Search() {
                             height={300}
                         />
                         <div className="card-body">
-                            <h4 className="card-title">{post.Title}</h4>
+                            <div className="title">
+                                <h5 className="card-title">{post.Title}</h5>
+                            </div>
                             <p className="card-text price">
                                 {post.Price === 0 ? "Not Specified" : post.Price + " DHs"}
                             </p>
-                            <p className="card-text local">{post.localisation}</p>
-                            <p className="card-text type">{post.type}</p>
+                            <p className="card-text local">
+                                <GiPositionMarker className="position" />
+                                {post.localisation}</p>
+                            <p className="card-text type">
+                                <BiCategoryAlt className="category"/>
+                                {post.type}
+                            </p>
+                        </div>
+                        <div className="mt-auto">
+                            <Button
+                                href="https://www.avito.ma"
+                                target="_blank"
+                                rel="noreferrer"
+                                variant="outline-primary"
+                                className="btn btn-primary btn-lg btn-block btn1"
+                                disabled
+                            >
+                                {post.platform}
+                            </Button>
 
-                            <div className="mt-auto">
-                                <Button
-                                    href="https://www.avito.ma"
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    variant="outline-primary"
-                                    className="btn btn-primary btn-lg btn-block btn1"
-                                    disabled
-                                >
-                                    {post.platform}
-                                </Button>
-
-                                <Button
-                                    href={post.link}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    variant="outline-primary"
-                                    className="btn btn-primary btn-lg btn-block btn2"
-                                >
-                                    Visit Link
-                                </Button>
-                            </div>
+                            <Button
+                                href={post.link}
+                                target="_blank"
+                                rel="noreferrer"
+                                variant="outline-primary"
+                                className="btn btn-primary btn-lg btn-block btn2"
+                            >
+                                Visit Link
+                            </Button>
                         </div>
                     </div>
                 ))}
