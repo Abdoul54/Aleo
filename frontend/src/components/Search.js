@@ -4,7 +4,12 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "./Search.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { FiFilter, FiXCircle } from 'react-icons/fi';
+import { GiFilter, GiPositionMarker } from 'react-icons/gi';
 const API_BASE_URL = "http://localhost:5000/api";
+
+
+// Usage
 
 function Search() {
     const [searchQuery, setSearchQuery] = useState("");
@@ -14,6 +19,7 @@ function Search() {
     const [maxPrice, setMaxPrice] = useState("");
     const [typeFilter, setTypeFilter] = useState("");
     const [localizationFilter, setLocalizationFilter] = useState("");
+    const [showFilters, setShowFilters] = useState(false); // New state variable
 
     const searchPosts = async () => {
         try {
@@ -55,10 +61,21 @@ function Search() {
         searchPosts();
     };
 
+    const toggleFilters = () => {
+        setShowFilters(!showFilters);
+    };
+
     return (
         <div>
             <Form onSubmit={handleSearchSubmit} className="d-flex">
                 <div className="d-flex align-items-center" sticky="top">
+                    <Form.Control
+                        type="text"
+                        value={searchQuery}
+                        onChange={handleSearchInputChange}
+                        placeholder="Search..."
+                        className="me-2"
+                    />
                     <Form.Control
                         as="select"
                         type="select"
@@ -70,50 +87,57 @@ function Search() {
                         <option value="Property">Property</option>
                         <option value="Job">Job</option>
                     </Form.Control>
-                    <Form.Control
-                        type="text"
-                        value={searchQuery}
-                        onChange={handleSearchInputChange}
-                        placeholder="Search..."
-                        className="me-2"
-                    />
-                    <Form.Control
-                        type="number"
-                        placeholder="Min Price"
-                        value={minPrice}
-                        onChange={handleMinPriceChange}
-                        className="me-2"
-                    />
-                    <Form.Control
-                        type="number"
-                        placeholder="Max Price"
-                        value={maxPrice}
-                        onChange={handleMaxPriceChange}
-                        className="me-2"
-                    />
-                    <Form.Control
-                        type="text"
-                        placeholder="Type"
-                        value={typeFilter}
-                        onChange={handleTypeFilterChange}
-                        className="me-2"
-                    />
-                    <Form.Control
-                        type="text"
-                        placeholder="Localization"
-                        value={localizationFilter}
-                        onChange={handleLocalizationFilterChange}
-                        className="me-2"
-                    />
-                    <Button
-                        type="submit"
-                        variant="outline-success"
-                        className="btn btn-primary btn-lg btn-block btn2"
-                    >
-                        Search
-                    </Button>
+                    {showFilters && (
+                        <>
+                            <Form.Control
+                                type="number"
+                                placeholder="Min Price"
+                                value={minPrice}
+                                onChange={handleMinPriceChange}
+                                className="me-2"
+                            />
+                            <Form.Control
+                                type="number"
+                                placeholder="Max Price"
+                                value={maxPrice}
+                                onChange={handleMaxPriceChange}
+                                className="me-2"
+                            />
+                            <Form.Control
+                                type="text"
+                                placeholder="Type"
+                                value={typeFilter}
+                                onChange={handleTypeFilterChange}
+                                className="me-2"
+                            />
+                            <Form.Control
+                                type="text"
+                                placeholder="Localization"
+                                value={localizationFilter}
+                                onChange={handleLocalizationFilterChange}
+                                className="me-2"
+                            />
+                        </>
+
+                    )}
+                </div>
+
+                <Button
+                    type="submit"
+                    variant="outline-success"
+                    className="btn btn-success btn-lg btn-block btn2"
+                >
+                    Search
+                </Button>
+                <div
+                    variant="outline-primary"
+                    className={showFilters ? "active" : "icon"}
+                    onClick={toggleFilters}
+                >
+                    {showFilters ? <FiXCircle /> : <FiFilter />}
                 </div>
             </Form>
+
             <div className="card">
                 {searchResults.map((post) => (
                     <div key={post._id}>
@@ -127,11 +151,12 @@ function Search() {
                         />
                         <div className="card-body">
                             <h4 className="card-title">{post.Title}</h4>
-                            <p className="card-text local">{post.localisation}</p>
-                            <p className="card-text type">{post.type}</p>
                             <p className="card-text price">
                                 {post.Price === 0 ? "Not Specified" : post.Price + " DHs"}
                             </p>
+                            <p className="card-text local">{post.localisation}</p>
+                            <p className="card-text type">{post.type}</p>
+
                             <div className="mt-auto">
                                 <Button
                                     href="https://www.avito.ma"
@@ -148,7 +173,7 @@ function Search() {
                                     href={post.link}
                                     target="_blank"
                                     rel="noreferrer"
-                                    variant="outline-success"
+                                    variant="outline-primary"
                                     className="btn btn-primary btn-lg btn-block btn2"
                                 >
                                     Visit Link

@@ -19,7 +19,6 @@
 }
 
 .btn {
-    background-color: #4CAF50;
     color: white;
     padding: 8px 36px;
     text-align: center;
@@ -29,11 +28,35 @@
     cursor: pointer;
 }
 
-.btn1{
+.btn1 {
     width: 55%;
 }
 
-.btn2{
+.btn2 {
     border: none;
-    
+}
+
+.btn2:hover {
+    background-color: #ffffff;
+    border: 1px solid blue;
+    color: blue;
+}
+
+.icon {
+    cursor: pointer;
+    font-size: 24px;
+    margin-left: 15px;
+    margin-top: 3px;
+}
+
+.active {
+    color: red;
+    cursor: pointer;
+    font-size: 24px;
+    margin-left: 15px;
+    margin-top: 3px;
+}
+
+.mt-auto{
+    margin-top: 100px;
 }
