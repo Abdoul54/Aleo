@@ -94,6 +94,7 @@ function Search() {
                                 value={minPrice}
                                 onChange={handleMinPriceChange}
                                 className="me-2"
+                                min={1}
                             />
                             <Form.Control
                                 type="number"
@@ -101,6 +102,7 @@ function Search() {
                                 value={maxPrice}
                                 onChange={handleMaxPriceChange}
                                 className="me-2"
+                                min={1}
                             />
                             <Form.Control
                                 type="text"
