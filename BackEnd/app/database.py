@@ -42,7 +42,7 @@ def findPost(category, q, min_price = None, max_price = None, type_filter = None
         filter_query["type"] = type_filter
         
     if localization_filter:
-        filter_query["localisation"] = localization_filter
+        filter_query["localisation"] = re.compile(localization_filter, re.IGNORECASE)
     
     cursor = ConnectDB()[0].Posts.find(filter_query)
     
