@@ -26,15 +26,15 @@ def findPost(category, q, min_price = None, max_price = None, type_filter = None
         "Category": category
     }
     
-    if min_price is not None and min_price.isdigit():
+    if min_price is not None and str(min_price).isdigit():
         min_price = int(min_price)
         filter_query["Price"] = {"$gte": min_price}
         
-    if max_price is not None and max_price.isdigit():
+    if max_price is not None and str(max_price).isdigit():
         max_price = int(max_price)
         filter_query["Price"] = {"$lte": max_price}
         
-    if min_price is not None and max_price is not None and min_price.isdigit() and max_price.isdigit():
+    if min_price is not None and max_price is not None and str(min_price).isdigit() and str(max_price).isdigit():
         min_price, max_price = int(min_price), int(max_price)
         filter_query["Price"] = {"$gte": min_price, "$lte": max_price}
         
