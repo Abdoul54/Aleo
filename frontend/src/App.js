@@ -7,6 +7,7 @@ import Navbar from "react-bootstrap/Navbar";
 import './App.css';
 import Landing from "./components/Landing";
 import Search from "./components/Search";
+import AdminPage from "./components/adminPage";
 
 
 
@@ -40,6 +41,7 @@ function App() {
 				<Routes>
 					<Route path="/" element={<Landing />} />
 					<Route path="/search" element={<Search />} />
+					<Route path="/admin" element={<AdminPage />} />
 				</Routes>
 			</Container>
 		</Router>

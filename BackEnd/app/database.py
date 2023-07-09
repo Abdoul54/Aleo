@@ -1,9 +1,10 @@
+from datetime import datetime
+import logging
 from pymongo import MongoClient
 import re
 from linkpreview import link_preview
 
-def InsertDB(post):
-  ConnectDB()[0].Posts.insert_one(post)
+
 def ConnectDB():
   client = MongoClient('mongodb://localhost:27017/mydb?directConnection=true')
   db = client['Scrape']
@@ -59,3 +60,21 @@ def check():
         ConnectDB()[0].Posts.delete_one({'link':post['link']})
     except Exception as e:
       print(e)
+
+def Insert(data):
+    try:
+
+        db = ConnectDB()[0]
+        # Supprimer les articles existants
+        data = [item for item in data if len(
+            list(db.Posts.find({"link": {"$eq": item['link']}}))) == 0]
+        # Insérer les données dans la collection
+        db.Posts.insert_many(data)
+        yield "Data inserted successfully"
+
+        # Fermer la connexion à la base de données
+        DisconnectDB()
+    except Exception as e:
+        logging.error(
+            f"{datetime.now()}:\nAn error occurred while saving data to the database: {e}")
+
