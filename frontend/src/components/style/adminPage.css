@@ -1,0 +1,23 @@
+/* adminPage.css */
+.admin-container {
+    padding: 20px;
+}
+
+.admin-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.admin-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.admin-buttons button {
+    margin-right: 10px;
+}
+
+.admin-result {
+    margin-top: 10px;
+}

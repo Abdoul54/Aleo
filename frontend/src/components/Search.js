@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import "./Search.css";
+import "./style/Search.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FiFilter, FiXCircle } from 'react-icons/fi';
 import { GiPositionMarker } from 'react-icons/gi';
