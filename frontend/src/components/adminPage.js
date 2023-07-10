@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import LoginPage from './loginPage';
 import Table from './table';
+import './style/adminPage.css'
+
 
 const AdminPage = () => {
   const [scrapingResult, setScrapingResult] = useState('');
@@ -14,10 +16,12 @@ const AdminPage = () => {
       setLoggedIn(true);
     }
   }, []);
+
   const handleLogin = () => {
     setLoggedIn(true);
-    localStorage.setItem('isLoggedIn', 'true')
+    localStorage.setItem('isLoggedIn', 'true');
   };
+
   const handleScrape = async () => {
     try {
       const response = await axios.post('/api/admin/scrape');
@@ -39,20 +43,32 @@ const AdminPage = () => {
   };
 
   return (
-    <div>
-      {
-      isLoggedIn ? (
-      <div>
-      <h2>Admin Page</h2>
-      <button onClick={handleScrape}>Scrape Data</button>
-      <p>{scrapingResult}</p>
-      <button onClick={handleDelete}>Delete Data</button>
-      <p>{deletionResult}</p>
-      <Table/>
-      </div>
-      ): (<LoginPage onLogin={handleLogin} />)}
+    <div className="container admin-container">
+      {isLoggedIn ? (
+        <div>
+          <h2 className="admin-title">Admin Page</h2>
+          <div className="admin-buttons">
+            <div>
+              <button className="btn btn-primary" onClick={handleScrape}>
+                Scrape Data
+              </button>
+              <p className="admin-result">{scrapingResult}</p>
+            </div>
+            <div>
+              <button className="btn btn-danger delete" onClick={handleDelete}>
+                Delete Data
+              </button>
+              <p className="admin-result">{deletionResult}</p>
+            </div>
+          </div>
+          <Table />
+        </div>
+      ) : (
+        <LoginPage onLogin={handleLogin} />
+      )}
     </div>
   );
+
 };
 
 export default AdminPage;

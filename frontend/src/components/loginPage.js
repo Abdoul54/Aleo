@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './style/loginPage.css'
 
 const LoginPage = ({ onLogin }) => {
   const [username, setUsername] = useState('');
@@ -14,29 +15,35 @@ const LoginPage = ({ onLogin }) => {
   };
 
   return (
-    <div>
-      <h2>Admin Login</h2>
+    <div className="login-form">
+      <h1>Admin Login</h1>
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
-        <br />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <br />
-        <button type="submit">Login</button>
+        <div className='form-group'>
+          <input
+            type="text"
+            placeholder="Username"
+            className="form-control"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="password"
+            placeholder="Password"
+            className="form-control"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        <button type="submit" className="btn btn-primary">Login</button>
       </form>
     </div>
   );
 };
 
+
 export default LoginPage;
+
