@@ -8,6 +8,7 @@ import './App.css';
 import Landing from "./components/Landing";
 import Search from "./components/Search";
 import AdminPage from "./components/adminPage";
+import { Button } from "react-bootstrap";
 
 
 
@@ -18,10 +19,7 @@ function App() {
 				<Container fluid>
 					<Navbar.Toggle aria-controls="navbarScroll" />
 					<Navbar.Collapse id="navbarScroll">
-						<Nav
-							className="me-auto my-2 my-lg-0"
-							navbarScroll
-						>
+						<Nav className="me-auto my-2 my-lg-0" navbarScroll>
 							<Nav.Item>
 								<Link to="/" className="nav-link">
 									Home
@@ -33,8 +31,16 @@ function App() {
 								</Link>
 							</Nav.Item>
 						</Nav>
+						<Nav className="ms-auto" navbarScroll>
+							<Nav.Item>
+								<Link to="/admin" className="nav-link me-2">
+									<Button type="button" className="btn btn-secondary">Login</Button>
+								</Link>
+							</Nav.Item>
+						</Nav>
 					</Navbar.Collapse>
 				</Container>
+
 			</Navbar>
 
 			<Container fluid>
