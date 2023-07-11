@@ -1,7 +1,7 @@
 from flask import request
 from . import app, database
 from bson import ObjectId
-import json
+import json, time
 class JSONEncoder(json.JSONEncoder):
     def default(self, o):
         if isinstance(o, ObjectId):
@@ -25,6 +25,22 @@ def findposts(category, q):
     
     return json.dumps(results, cls=JSONEncoder)
 
-@app.route('/api/admin/delete', methods=['GET'])
+@app.route('/api/admin/scrape', methods=['GET'])
+def scrape_data():
+    res = database.scrape('Agadir')
+    return res
+@app.route('/api/admin/delete/<id>', methods=['GET'])
 def delete_data():
-    pass
+    return database.deletePost(id)
+
+@app.route('/api/admin/posts/count')
+def countPosts():
+    return database.postCounter()
+
+@app.route('/api/admin/posts/count/check')
+def countPosts():
+    return database.checkCounter()
+
+@app.route('/api/admin/posts/remove')
+def countPosts():
+    return database.check()

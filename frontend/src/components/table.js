@@ -5,7 +5,7 @@ import axios from "axios";
 const API_BASE_URL = "http://localhost:5000/api";
 
 const Table = () => {
-  const [Results, setResults] = useState([{
+  const [items, setItems] = useState([{
     "_id":1,
     "Title": "Something good",
     "Category": "The Goodies",
@@ -20,7 +20,7 @@ const Table = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`${API_BASE_URL}/posts`);
-        setResults(response.data);
+        setItems(response.data);
       } catch (error) {
         console.error("Error fetching posts:", error);
       }
@@ -41,7 +41,7 @@ const Table = () => {
     // e.g., show a confirmation dialog and delete the item
   };
 
-  return (Object.keys(Results).length === 0 ? 
+  return (Object.keys(items).length === 0 ? 
     <h2>loading ...</h2>
    : 
     <div className="table-container">
@@ -59,7 +59,7 @@ const Table = () => {
             </tr>
           </thead>
           <tbody>
-            {Results.map((item) => (
+            {items.map((item) => (
               <tr key={item._id}>
                 <td>{item.Title}</td>
                 <td>{item.Category}</td>

@@ -9,6 +9,7 @@ import Landing from "./components/Landing";
 import Search from "./components/Search";
 import AdminPage from "./components/adminPage";
 import { Button } from "react-bootstrap";
+import Scrape from "./components/scraper";
 
 
 
@@ -48,6 +49,7 @@ function App() {
 					<Route path="/" element={<Landing />} />
 					<Route path="/search" element={<Search />} />
 					<Route path="/admin" element={<AdminPage />} />
+					<Route path="/admin/scrape" element={<Scrape />} />
 				</Routes>
 			</Container>
 		</Router>

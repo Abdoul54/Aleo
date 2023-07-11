@@ -1,61 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import axios from "axios";
+import React, { useState } from "react";
+const API_BASE_URL = "http://localhost:5000/api";
 
-const UserList = () => {
-  const [users, setUsers] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+const Scrape = () => {
+  const [response, setResponse] = useState("");
+  const [showProg, setShowProg] = useState(false);
 
-  const fetchUsers = async () => {
-    try {
-      const response = await fetch('/api/users');
-      const data = await response.json();
-      setUsers(data);
-    } catch (error) {
-      console.error('Error fetching users:', error);
-    }
+  const handleButtonClick = () => {
+    axios
+      .get(`${API_BASE_URL}/admin/scrape`)
+      .then((response) => setResponse(response.data))
+      .catch((error) => console.log(error));
+
+    setShowProg(true);
   };
-
-  const checkUsers = async () => {
-    try {
-      const response = await fetch('/api/check-users');
-      const data = await response.json();
-      // Append new user information to the existing list
-      setUsers((prevUsers) => [...prevUsers, ...data]);
-    } catch (error) {
-      console.error('Error checking users:', error);
-    }
-  };
-
-  useEffect(() => {
-    fetchUsers();
-    const interval = setInterval(checkUsers, 5000); // Poll every 5 seconds
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (users.length > 0) {
-      setIsLoading(false);
-    }
-  }, [users]);
 
   return (
     <div>
-      <h2>User List</h2>
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
-        <ul>
-          {users.map((userData, index) => (
-            <li key={index}>
-              {userData.user.name} - {userData.message}
-            </li>
-          ))}
-        </ul>
+      <button onClick={handleButtonClick}>Trigger API</button>
+      {showProg && (
+        <p>{response === "" ? "Scraping..." : "Scraping is done!"}</p>
       )}
     </div>
   );
 };
 
-export default UserList;
+export default Scrape;

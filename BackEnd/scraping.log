@@ -1,0 +1,88 @@
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 861-352-624
+INFO:werkzeug:127.0.0.1 - - [11/Jul/2023 20:20:48] "GET /api/posts HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Jul/2023 20:22:01] "GET /api/posts HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Jul/2023 20:23:51] "GET /api/posts HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 861-352-624
+INFO:werkzeug:127.0.0.1 - - [11/Jul/2023 20:25:29] "GET /api/search/Vehicle/Casa HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Jul/2023 20:26:02] "[35m[1mGET /api/admin/scrape HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in 'C:\\Silicon Valley\\Projects\\Aleo\\backend\\app\\routes.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 861-352-624
+INFO:werkzeug: * Detected change in 'C:\\Silicon Valley\\Projects\\Aleo\\backend\\app\\routes.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 861-352-624
+INFO:werkzeug: * Detected change in 'C:\\Silicon Valley\\Projects\\Aleo\\backend\\app\\routes.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 861-352-624
+INFO:werkzeug: * Detected change in 'C:\\Silicon Valley\\Projects\\Aleo\\backend\\app\\routes.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 861-352-624
+INFO:werkzeug:127.0.0.1 - - [11/Jul/2023 20:26:39] "[35m[1mGET /api/admin/scrape HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in 'C:\\Silicon Valley\\Projects\\Aleo\\backend\\app\\database.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 861-352-624
+INFO:werkzeug:127.0.0.1 - - [11/Jul/2023 20:35:30] "[35m[1mGET /api/admin/scrape HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in 'C:\\Silicon Valley\\Projects\\Aleo\\backend\\app\\routes.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 861-352-624
+INFO:werkzeug: * Detected change in 'C:\\Silicon Valley\\Projects\\Aleo\\backend\\app\\routes.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 861-352-624
+ERROR:root:2023-07-11 20:37:30.627098:
+An error occurred while saving data to the database: documents must be a non-empty list
+INFO:werkzeug:127.0.0.1 - - [11/Jul/2023 20:37:37] "[35m[1mGET /api/admin/scrape HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in 'C:\\Silicon Valley\\Projects\\Aleo\\backend\\app\\database.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 861-352-624
+INFO:werkzeug: * Detected change in 'C:\\Silicon Valley\\Projects\\Aleo\\backend\\app\\routes.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 861-352-624
+INFO:werkzeug: * Detected change in 'C:\\Silicon Valley\\Projects\\Aleo\\backend\\app\\routes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 861-352-624
+INFO:werkzeug: * Detected change in 'C:\\Silicon Valley\\Projects\\Aleo\\backend\\app\\routes.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 861-352-624
+INFO:werkzeug:127.0.0.1 - - [11/Jul/2023 20:41:51] "[35m[1mGET /api/admin/scrape HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in 'C:\\Silicon Valley\\Projects\\Aleo\\backend\\app\\routes.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 861-352-624
+INFO:werkzeug: * Detected change in 'C:\\Silicon Valley\\Projects\\Aleo\\backend\\app\\routes.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 861-352-624
+INFO:werkzeug: * Detected change in 'C:\\Silicon Valley\\Projects\\Aleo\\backend\\app\\routes.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 861-352-624
+INFO:werkzeug:127.0.0.1 - - [11/Jul/2023 20:50:43] "GET /api/admin/scrape HTTP/1.1" 200 -
