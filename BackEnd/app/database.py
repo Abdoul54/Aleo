@@ -182,4 +182,3 @@ def scrape(*cities):
     print("Scraping completed successfully")
     return 'Done'
 
-print(deletePost('64adaee25710c74a98605017'))

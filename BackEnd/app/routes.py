@@ -33,14 +33,10 @@ def scrape_data():
 def delete_data():
     return database.deletePost(id)
 
-@app.route('/api/admin/posts/count')
+@app.route('/api/admin/posts/count', methods=['GET'])
 def countPosts():
     return database.postCounter()
 
-@app.route('/api/admin/posts/count/check')
-def countPosts():
-    return database.checkCounter()
-
-@app.route('/api/admin/posts/remove')
-def countPosts():
+@app.route('/api/admin/posts/remove', methods=['GET'])
+def checkPosts():
     return database.check()

@@ -152,10 +152,10 @@ function Search() {
                         />
                         <div className="card-body">
                             <div className="title">
-                                <h5 className="card-title">{post.Title}</h5>
+                                <h5 className="card-title">{post.title}</h5>
                             </div>
                             <p className="card-text price">
-                                {post.Price === 0 ? "Not Specified" : post.Price + " DHs"}
+                                {post.price === 0 ? "Not Specified" : post.price + " DHs"}
                             </p>
                             <p className="card-text local">
                                 <GiPositionMarker className="position" />
