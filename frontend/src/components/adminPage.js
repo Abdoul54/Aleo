@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import LoginPage from './loginPage';
-import Table from './table';
+import LoginPage from './dashboard/loginPage';
+import Table from './dashboard/table';
 import './style/adminPage.css'
 
 

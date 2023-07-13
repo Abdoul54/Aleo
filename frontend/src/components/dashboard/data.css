@@ -1,0 +1,56 @@
+/* data.css */
+.additional-content {
+  margin-top: -10%;
+  margin-right: 17%;
+  text-align: center;
+  font-size: 14pt;
+  font-weight: bold;
+  color: orangered;
+  /* Additional styles as needed */
+}
+
+.removable-posts-container {
+  display: flex;
+  margin-top: 5%;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.removable-posts-button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  background-color: #0074d9;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.removable-posts-button:hover {
+  background-color: #0056b3;
+}
+
+
+/* data.css */
+
+.loader {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  border-top-color: #888;
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Rest of your CSS styles */
