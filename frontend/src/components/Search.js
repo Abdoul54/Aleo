@@ -146,6 +146,7 @@ function Search() {
                             src={post.image}
                             className="card-img-top"
                             alt="..."
+                            style={{"objectFit":"cover"}}
                             fluid
                             width={300}
                             height={300}
