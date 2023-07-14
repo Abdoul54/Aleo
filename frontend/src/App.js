@@ -17,7 +17,7 @@ import { BsSearch } from 'react-icons/bs';
 function App() {
 	return (
 		<Router>
-			<Navbar  className="navbar .bg-body-tertiary" data-bs-theme="light" sticky="top" >
+			<Navbar  className="navbar bg-body-tertiary" sticky="top" >
 				<Container fluid>
 					<Navbar.Toggle aria-controls="navbarScroll" />
 					<Navbar.Collapse id="navbarScroll">
