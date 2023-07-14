@@ -391,3 +391,12 @@ INFO:werkzeug:127.0.0.1 - - [13/Jul/2023 02:53:46] "GET /api/posts HTTP/1.1" 200
 INFO:werkzeug:127.0.0.1 - - [13/Jul/2023 02:53:47] "GET /api/posts HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [13/Jul/2023 02:54:04] "GET /api/admin/delete/64adaee25710c74a98605020 HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [13/Jul/2023 02:54:04] "GET /api/posts HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 101-092-245
+INFO:werkzeug:127.0.0.1 - - [14/Jul/2023 15:31:38] "[35m[1mGET /api/admin/posts/count HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [14/Jul/2023 15:34:04] "GET /api/admin/posts/count HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Jul/2023 15:34:16] "GET /api/posts HTTP/1.1" 200 -
