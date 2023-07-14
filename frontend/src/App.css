@@ -14,3 +14,18 @@
   max-height: "100px"
 }
 
+.nav-link {
+  color: black;
+}
+
+
+.home-icon {
+  font-size: 15px;
+  margin-left: 10px;
+}
+
+.search-icon {
+  font-size: 15px;
+  margin-left: 10px;
+}
+

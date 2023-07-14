@@ -7,50 +7,50 @@ import Navbar from "react-bootstrap/Navbar";
 import './App.css';
 import Landing from "./components/Landing";
 import Search from "./components/Search";
-import { Button } from "react-bootstrap";
 import DataPage from "./components/dashboard/data";
 import Table from "./components/dashboard/table";
+import { AiFillHome } from 'react-icons/ai';
+import { BsSearch } from 'react-icons/bs';
 
 
 
 function App() {
 	return (
 		<Router>
-			<Navbar expand="lg" className="bg-body-tertiary" sticky="top">
+			<Navbar  className="navbar .bg-body-tertiary" data-bs-theme="light" sticky="top" >
 				<Container fluid>
 					<Navbar.Toggle aria-controls="navbarScroll" />
 					<Navbar.Collapse id="navbarScroll">
-						<Nav className="me-auto my-2 my-lg-0" navbarScroll>
-							<Nav.Item>
-								<Link to="/" className="nav-link">
-									Home
-								</Link>
-							</Nav.Item>
-							<Nav.Item>
+						<Nav className="nav nav-pills ms-auto" aria-current="page" navbarScroll>
+							<Nav.Item className="nav-item">
 								<Link to="/search" className="nav-link">
+									<div className="search-icon">
+										<BsSearch />
+									</div>
 									Search
 								</Link>
 							</Nav.Item>
-						</Nav>
-						<Nav className="ms-auto" navbarScroll>
 							<Nav.Item>
-								<Link to="/admin" className="nav-link me-2">
-									<Button type="button" className="btn btn-secondary">Login</Button>
+								<Link to="/" className="nav-link">
+									<div className="home-icon">
+										<AiFillHome />
+									</div>
+									Home
 								</Link>
 							</Nav.Item>
 						</Nav>
 					</Navbar.Collapse>
 				</Container>
-
 			</Navbar>
+
 
 			<Container fluid>
 				<Routes>
 					<Route path="/" element={<Landing />} />
 					<Route path="/search" element={<Search />} />
-					<Route path="/admin" element={<DataPage />}/>
+					<Route path="/admin" element={<DataPage />} />
 					<Route path="/admin/posts" element={<Table />} />
-				</Routes> 
+				</Routes>
 			</Container>
 		</Router>
 	);

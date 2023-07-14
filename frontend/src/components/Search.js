@@ -65,7 +65,7 @@ function Search() {
     };
 
     return (
-        <div>
+        <div className="search-area">
             <Form onSubmit={handleSearchSubmit} className="d-flex">
                 <div className="d-flex align-items-center" sticky="top">
                     <Form.Control

@@ -56,22 +56,22 @@
     margin-top: 3px;
 }
 
-.mt-auto{
+.mt-auto {
     margin-top: 1000px;
 }
 
-.search:hover{
+.search:hover {
     background-color: white;
     border: 1px solid green;
     color: green;
 }
 
-.position{
+.position {
     margin-right: 5px;
     margin-bottom: 5px;
 }
 
-.category{
+.category {
     margin-right: 5px;
     margin-bottom: 5px;
 }
