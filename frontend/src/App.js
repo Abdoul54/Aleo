@@ -22,6 +22,15 @@ function App() {
 					<Navbar.Toggle aria-controls="navbarScroll" />
 					<Navbar.Collapse id="navbarScroll">
 						<Nav className="nav nav-pills ms-auto" aria-current="page" navbarScroll>
+						<Nav.Item className="nav-item">
+						<img
+                            src="/pictures/AleoLogo.png"                            
+							className="logo-img"
+                            alt="..."
+                            style={{"objectFit":"cover"}}
+                            fluid
+                        />
+							</Nav.Item>
 							<Nav.Item className="nav-item">
 								<Link to="/search" className="nav-link">
 									<div className="search-icon">

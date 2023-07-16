@@ -2,10 +2,18 @@ import React, { useState, useEffect } from "react";
 import { PieChart, Pie, Cell, Legend, Label, Tooltip } from "recharts";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import "./data.css";
 import LoginPage from "./loginPage";
 const API_BASE_URL = "http://localhost:5000/api";
+
+const Header = () => {
+  return (
+    <h2>Dashboard</h2>
+  )
+};
 
 const DataPage = () => {
   const [postCount, setPostCount] = useState(0);
@@ -148,48 +156,53 @@ const DataPage = () => {
       setLoading(false);
     }
   };
-
   return (
-    <div className="container admin-container">
-      {isLoggedIn ? (
-        <div>
-          <h2>Admin Dashboard</h2>
+    <div>
+      <nav className="navbar2">
+        <h1>Admin</h1>
+        <button
+          className="btn btn-primary btn-fixed-size"
+          disabled={loading}
+          onClick={handleCheckPosts}
+        >
+          {loading ? <div className="loader" /> : "Check Removable Posts"}
+        </button>
+        <a href="/admin/posts">
+          <button className="btn btn-secondary btn-fixed-size">See Posts</button>
+        </a>
+        <button
+          className="btn btn-info btn-fixed-size"
+          disabled={loading}
+          onClick={handleScrapeNewPosts}
+        >
+          {loading ? <div className="loader" /> : "Scrape New Posts"}
+        </button>
+        <button
+          className="btn btn-danger btn-fixed-size"
+          disabled={loading}
+          onClick={handleRemovePosts}
+        >
+          {loading ? <div className="loader" /> : "Remove Posts"}
+        </button>
+      </nav>
+      <div className="content-container btn-fixed-size">
+        {isLoggedIn ? (
           <div>
-            <DataDonutChart />
-            <div className="removable-posts-container">
-              <button
-                className="removable-posts-button"
-                disabled={loading}
-                onClick={handleCheckPosts}
-              >
-                {loading ? <div className="loader" /> : "Check Removable Posts"}
-              </button>
-              <a href="/admin/posts">
-                <button className="removable-posts-button">See Posts</button>
-              </a>
-              <button
-                className="removable-posts-button"
-                disabled={loading}
-                onClick={handleScrapeNewPosts}
-              >
-                {loading ? <div className="loader" /> : "Scrape New Posts"}
-              </button>
-              <button
-                className="removable-posts-button"
-                disabled={loading}
-                onClick={handleRemovePosts}
-              >
-                {loading ? <div className="loader" /> : "Remove Posts"}
-              </button>
+            <div className="admin-header">
+              <h2><Header /></h2>
+            </div>
+            <div className="donut-chart-container">
+              <div className="col-md-8">
+                <DataDonutChart />
+              </div>
             </div>
             <ToastContainer />
           </div>
-        </div>
-      ) : (
-        <LoginPage onLogin={handleLogin} />
-      )}
+        ) : (
+          <LoginPage onLogin={handleLogin} />
+        )}
+      </div>
     </div>
   );
-};
-
+}
 export default DataPage;
