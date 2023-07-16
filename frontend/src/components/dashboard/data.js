@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { PieChart, Pie, Cell, Legend, Label, Tooltip } from "recharts";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import "./data.css";
 import LoginPage from "./loginPage";
