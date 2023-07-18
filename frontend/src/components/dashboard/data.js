@@ -156,33 +156,6 @@ const DataPage = () => {
   };
   return (
     <div>
-      <nav className="navbar2">
-        <h1>Admin</h1>
-        <button
-          className="btn btn-primary btn-fixed-size"
-          disabled={loading}
-          onClick={handleCheckPosts}
-        >
-          {loading ? <div className="loader" /> : "Check Removable Posts"}
-        </button>
-        <a href="/admin/posts">
-          <button className="btn btn-secondary btn-fixed-size">See Posts</button>
-        </a>
-        <button
-          className="btn btn-info btn-fixed-size"
-          disabled={loading}
-          onClick={handleScrapeNewPosts}
-        >
-          {loading ? <div className="loader" /> : "Scrape New Posts"}
-        </button>
-        <button
-          className="btn btn-danger btn-fixed-size"
-          disabled={loading}
-          onClick={handleRemovePosts}
-        >
-          {loading ? <div className="loader" /> : "Remove Posts"}
-        </button>
-      </nav>
       <div className="content-container btn-fixed-size">
         {isLoggedIn ? (
           <div>
@@ -192,6 +165,34 @@ const DataPage = () => {
             <div className="donut-chart-container">
               <div className="col-md-8">
                 <DataDonutChart />
+                <nav className="navbar2">
+                  <h1>Admin</h1>
+                  <button
+                    className="btn btn-primary btn-fixed-size"
+                    disabled={loading}
+                    onClick={handleCheckPosts}
+                  >
+                    {loading ? <div className="loader" /> : "Check Removable Posts"}
+                  </button>
+                  <a href="/admin/posts">
+                    <button className="btn btn-secondary btn-fixed-size">See Posts</button>
+                  </a>
+                  <button
+                    className="btn btn-info btn-fixed-size"
+                    disabled={loading}
+                    onClick={handleScrapeNewPosts}
+                  >
+                    {loading ? <div className="loader" /> : "Scrape New Posts"}
+                  </button>
+                  <button
+                    className="btn btn-danger btn-fixed-size"
+                    disabled={loading}
+                    onClick={handleRemovePosts}
+                  >
+                    {loading ? <div className="loader" /> : "Remove Posts"}
+                  </button>
+                </nav>
+
               </div>
             </div>
             <ToastContainer />
