@@ -3,3 +3,10 @@ GET http://localhost:5000/api/search/Vehicle/Casa HTTP/1.1
 ###
 
 GET http://localhost:5000/api/posts HTTP/1.1
+
+
+###
+GET http://localhost:5000/api/admin/scrape HTTP/1.1
+
+###
+GET http://localhost:5000/api/admin/posts/count HTTP/1.1

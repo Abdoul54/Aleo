@@ -18,7 +18,7 @@ const DataPage = () => {
   const [vehicles, setVehicles] = useState(0);
   const [properties, setProperties] = useState(0);
   const [jobs, setJobs] = useState(0);
-  const [removable, setRemovable] = useState(0);
+  const [outdated, setOutdated] = useState(0);
   const [loading, setLoading] = useState(false);
   const [res, setRes] = useState("");
   const [isLoggedIn, setLoggedIn] = useState(false);
@@ -42,11 +42,12 @@ const DataPage = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(`${API_BASE_URL}/admin/posts/count`);
-      const { Posts, Jobs, Properties, Vehicles } = response.data;
+      const { Posts, Jobs, Properties, Vehicles, outDatedPosts  } = response.data;
       setPostCount(Posts);
       setJobs(Jobs);
       setProperties(Properties);
       setVehicles(Vehicles);
+      setOutdated(outDatedPosts);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -105,7 +106,7 @@ const DataPage = () => {
         </PieChart>
         <div className="additional-content">
           <p>
-            {removable} {removable > 1 ? "Posts" : "Post"} To Be Removed
+            {outdated} {outdated > 1 ? "Posts" : "Post"} To Be Removed
           </p>
         </div>
       </div>
@@ -115,13 +116,13 @@ const DataPage = () => {
   const handleCheckPosts = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`${API_BASE_URL}/admin/posts/404`);
-      setRemovable(response.data.removable);
-      toast.success("Checking for removable posts ended.");
+      await axios.get(`${API_BASE_URL}/admin/posts/404`);
+      toast.success("Checking for outdated posts ended.");
     } catch (error) {
-      console.error("Error checking removable posts:", error);
+      console.error("Error checking outdated posts:", error);
     } finally {
       setLoading(false);
+      fetchData()
     }
   };
 
@@ -146,7 +147,7 @@ const DataPage = () => {
     try {
       setLoading(true);
       await axios.get(`${API_BASE_URL}/posts/remove`);
-      toast.success("All removable posts has been terminated.");
+      toast.success("All outdated posts have been terminated.");
     } catch (error) {
       console.error("Error removing posts:", error);
       toast.error(error);
@@ -166,13 +167,12 @@ const DataPage = () => {
               <div className="col-md-8">
                 <DataDonutChart />
                 <nav className="navbar2">
-                  <h1>Admin</h1>
                   <button
                     className="btn btn-primary btn-fixed-size"
                     disabled={loading}
                     onClick={handleCheckPosts}
                   >
-                    {loading ? <div className="loader" /> : "Check Removable Posts"}
+                    {loading ? <div className="loader" /> : "Check outdated Posts"}
                   </button>
                   <a href="/admin/posts">
                     <button className="btn btn-secondary btn-fixed-size">See Posts</button>

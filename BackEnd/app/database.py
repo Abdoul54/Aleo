@@ -55,25 +55,62 @@ def findPost(category, q, min_price = None, max_price = None, type_filter = None
 def DisconnectDB():
     ConnectDB()[1].close()
 
-def check():
+def removePosts():
   for post in ConnectDB()[0].Posts.find():
     try:
-      preview = link_preview(post['link'])
-      if preview.title is None:
+      if post['outdate']:
         ConnectDB()[0].Posts.delete_one({'link':post['link']})
     except Exception as e:
       print(e)
 
-def checkCounter():
-    counter = 0
-    for post in ConnectDB()[0].Posts.find():
+def outdatedPosts():
+    return ConnectDB()[0].Posts.count_documents({"outdate":True})
+
+def checkerV():
+    avito_title_prefix = 'Vente et achat en ligne partout au Maroc à vendre - Avito'
+
+    # Use a projection to fetch only the necessary fields 'link' and 'title'
+    cursor = ConnectDB()[0].Posts.find({'category': 'Vehicle'}, {'link': 1, 'title': 1})
+
+    for post in cursor:
         try:
-            preview = link_preview(post['link'])
-            if preview.title is None:
-                counter += 1
+            if link_preview(post['link']).title.startswith(avito_title_prefix):
+                post['outdate'] = True
         except Exception as e:
             print(e)
-    return counter
+
+    print('Properties Checked!')
+
+def checkerP():
+    avito_title_prefix = 'Vente et achat en ligne partout au Maroc à vendre - Avito'
+
+    # Use a projection to fetch only the necessary fields 'link' and 'title'
+    cursor = ConnectDB()[0].Posts.find({'category': 'Property'}, {'link': 1, 'title': 1})
+
+    for post in cursor:
+        try:
+            if link_preview(post['link']).title.startswith(avito_title_prefix):
+                post['outdate'] = True
+        except Exception as e:
+            print(e)
+
+    print('Properties Checked!')
+
+def checkerJ():
+    avito_title_prefix = 'Vente et achat en ligne partout au Maroc à vendre - Avito'
+
+    # Use a projection to fetch only the necessary fields 'link' and 'title'
+    cursor = ConnectDB()[0].Posts.find({'category': 'Job'}, {'link': 1, 'title': 1})
+
+    for post in cursor:
+        try:
+            if link_preview(post['link']).title.startswith(avito_title_prefix):
+                post['outdate'] = True
+        except Exception as e:
+            print(e)
+
+    print('Properties Checked!')
+
 
 def postCounter():
     db = ConnectDB()[0]
@@ -81,7 +118,7 @@ def postCounter():
     Vehicles = db.Posts.count_documents({"category":"Vehicle"})
     Properties = db.Posts.count_documents({"category":"Property"})
     Jobs = db.Posts.count_documents({"category":"Job"})
-    return {"Posts":Posts,"Vehicles":Vehicles,"Properties":Properties,"Jobs":Jobs}
+    return {"Posts":Posts,"Vehicles":Vehicles,"Properties":Properties,"Jobs":Jobs,"outDatedPosts":outdatedPosts()}
 
 def deletePost(id):
     db = ConnectDB()[0]
@@ -168,6 +205,7 @@ def scrape(*cities):
                                     "localisation": localisation,
                                     "type": typeV,
                                     "platform": "www.avito.ma",
+                                    "outdated": False,
                                     "scraped_at":datetime.now().strftime('%Y-%m-%d %H:%M:%S')
                                 })
                         else:

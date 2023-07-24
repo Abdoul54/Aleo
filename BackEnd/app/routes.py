@@ -46,9 +46,11 @@ def countPosts():
 #removes the removable posts
 @app.route('/api/admin/posts/remove', methods=['GET'])
 def checkPosts():
-    return database.check()
+    return database.removePosts()
 
 #returns number of removable posts
 @app.route('/api/admin/posts/404', methods=['GET'])
 def checkCounterPosts():
-    return {"removable":database.checkCounter()}
+    database.checkerJ()
+    database.checkerV()
+    database.checkerP()
