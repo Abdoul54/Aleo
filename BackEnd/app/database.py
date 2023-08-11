@@ -1,17 +1,20 @@
 from datetime import datetime
-import logging,re
+import logging, re, os
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import JavascriptException
 from pymongo import MongoClient
 from linkpreview import link_preview
 from bson.objectid import ObjectId
-
+from dotenv import load_dotenv
 
 def ConnectDB():
-  client = MongoClient('mongodb://localhost:27017/mydb?directConnection=true')
-  db = client['Scrape']
-  return db, client
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    dotenv_path = os.path.join(script_dir, '..', '.env')
+    load_dotenv(dotenv_path)
+    client = MongoClient(os.environ.get('MONGODB_URL'))
+    db = client['Scrape']
+    return db, client
     
 def getPost():  
   return list(ConnectDB()[0].Posts.find())
@@ -56,12 +59,12 @@ def DisconnectDB():
     ConnectDB()[1].close()
 
 def removePosts():
-  for post in ConnectDB()[0].Posts.find():
-    try:
-      if post['outdate']:
-        ConnectDB()[0].Posts.delete_one({'link':post['link']})
-    except Exception as e:
-      print(e)
+    for post in ConnectDB()[0].Posts.find():
+        try:
+            if post.get('outdate', False):
+                ConnectDB()[0].Posts.delete_one({'link': post['link']})
+        except Exception as e:
+            print(f"Error while deleting post: {e}")
 
 def outdatedPosts():
     return ConnectDB()[0].Posts.count_documents({"outdate":True})
@@ -75,7 +78,11 @@ def checkerV():
     for post in cursor:
         try:
             if link_preview(post['link']).title.startswith(avito_title_prefix):
-                post['outdate'] = True
+                ConnectDB()[0].Posts.update_one(
+                    {'_id': post['_id']},
+                    {'$set': {'outdate': True}}
+                )
+
         except Exception as e:
             print(e)
 
@@ -219,4 +226,3 @@ def scrape(*cities):
     driver.quit()
     print("Scraping completed successfully")
     return 'Done'
-
