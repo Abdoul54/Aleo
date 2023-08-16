@@ -258,7 +258,7 @@ Certainly, you can add a section in your documentation to acknowledge and credit
 
 ## Équipe de Développement
 
-Nous sommes fiers de présenter l'équipe talentueuse qui a travaillé sur le développement de notre application web de listes d'annonces et de scraping. Chaque membre de notre équipe a apporté son expertise unique pour créer une expérience utilisateur exceptionnelle et des fonctionnalités robustes. Voici les membres de l'équipe :
+Nous sommes fiers de présenter l'équipe qui a travaillé sur le développement de notre application web de listes d'annonces et de scraping. Chaque membre de notre équipe a apporté son expertise unique pour créer une expérience utilisateur exceptionnelle et des fonctionnalités robustes. Voici les membres de l'équipe :
 
 ### [Abdelwahed Akhechane](https://github.com/Abdoul54)
 - Rôle : Développeur Backend
