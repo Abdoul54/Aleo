@@ -137,7 +137,7 @@ Dans la section "Guide de l'Utilisateur", où nous vous guiderons à travers les
 
 La page d'accueil sert de point d'entrée dans l'application, offrant un aperçu des catégories disponibles : Véhicules, Propriétés et Emplois. Voici comment naviguer sur la page d'accueil :
 
-![Landing Page](lp.png)
+![Landing Page](LandingPage.png)
 
 1. **Sélection de Catégorie :**
    Cliquez sur la catégorie qui vous intéresse le plus. Chaque carte de catégorie affiche une image représentative et un nom, offrant un aperçu des annonces dans cette catégorie.
@@ -145,7 +145,7 @@ La page d'accueil sert de point d'entrée dans l'application, offrant un aperçu
 ### Page de Recherche
 
 La page de recherche vous permet de trouver des annonces spécifiques correspondant à vos critères. Voici comment utiliser la fonction de recherche :
-![Search Page](sp.png)
+![Search Page](SearchingPage.png)
 
 1. **Barre de Recherche :**
    En haut de la page de recherche, vous trouverez une barre de recherche. Entrez des mots-clés liés à l'objet que vous recherchez, comme un modèle de voiture spécifique ou un titre d'emploi.
@@ -170,7 +170,7 @@ En tant qu'administrateur de l'application, vous avez accès à des fonctionnali
 
 Dans le tableau de bord, vous pouvez obtenir un aperçu des statistiques clés et gérer les opérations de base.
 
-![Dashboard](ap.png)
+![Dashboard](AdminPage.png)
 
 1. **Aperçu des Statistiques :**
    Sur le tableau de bord, vous pouvez visualiser rapidement les statistiques importantes, notamment le nombre total d'annonces dans la base de données, le nombre d'annonces obsolètes et d'autres métriques pertinentes.
@@ -267,7 +267,7 @@ Nous sommes fiers de présenter l'équipe qui a travaillé sur le développement
 [Voir Profil Linkedin](https://www.linkedin.com/in/abdelwahed-akhechane/)
 
 ### [Zakariae Heddaje](https://github.com/zakariaeheddaje)
-- Rôle : Développeuse Frontend
+- Rôle : Développeur Frontend
 - Description : Zakariae a dirigé le développement frontend en utilisant React et diverses bibliothèques pour créer une interface utilisateur moderne et intuitive. Ses compétences en conception ont apporté une touche esthétique à l'application.
 
 [Voir Profil Linkedin](https://www.linkedin.com/in/zakariae-heddaje-867480234/)
