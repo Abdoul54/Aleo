@@ -12,7 +12,7 @@ def ConnectDB():
     script_dir = os.path.dirname(os.path.abspath(__file__))
     dotenv_path = os.path.join(script_dir, '..', '.env')
     load_dotenv(dotenv_path)
-    client = MongoClient(os.environ.get('MONGODB_URL'))
+    client = MongoClient(os.environ.get('MONGODB_URI'))
     db = client['Scrape']
     return db, client
     

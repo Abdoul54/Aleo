@@ -51,6 +51,7 @@ npm install
 ```
 
 #### Installtion du Backend
+
 Accédez au répertoire d'installation et exécutez la commande suivante pour installer les dépendances nécessaires listées dans le fichier `requirements.txt`.
 
 ```bash
@@ -68,7 +69,7 @@ Une fois les dépendances installées, vous pouvez configurer l'application pour
    Exemple de fichier `.env` :
 
    ```
-   MONGODB_URL = mongodb://localhost:27017/mabase
+   MONGODB_URI = mongodb://localhost:27017/mabase
    ```
 
 ### Accès à l'Application
@@ -159,9 +160,6 @@ La page de recherche vous permet de trouver des annonces spécifiques correspond
 4. **Détails de l'Annonce :**
    La page de détails de chaque annonce fournit des informations complètes sur l'objet, telles que des images, des descriptions, des coordonnées et plus encore.
 
-
-
-
 ## Section Administrateur
 
 En tant qu'administrateur de l'application, vous avez accès à des fonctionnalités spéciales pour superviser et gérer les opérations avancées de l'application. Voici comment utiliser les fonctionnalités de la section "Administrateur":
@@ -190,8 +188,6 @@ Dans le tableau de bord, vous pouvez obtenir un aperçu des statistiques clés e
 ## Documentation de l'API
 
 Cette section expliquera chaque API disponible avec leur route et leur méthode
-
-
 
 ### Obtenir Toutes les Annonces
 
@@ -261,12 +257,14 @@ Certainly, you can add a section in your documentation to acknowledge and credit
 Nous sommes fiers de présenter l'équipe qui a travaillé sur le développement de notre application web de listes d'annonces et de scraping. Chaque membre de notre équipe a apporté son expertise unique pour créer une expérience utilisateur exceptionnelle et des fonctionnalités robustes. Voici les membres de l'équipe :
 
 ### [Abdelwahed Akhechane](https://github.com/Abdoul54)
+
 - Rôle : Développeur Backend
 - Description : Abdelwahed était responsable de la conception et de la mise en œuvre du backend de l'application, en utilisant Flask et les dernières technologies pour assurer un flux de données fluide et une sécurité renforcée.
 
 [Voir Profil Linkedin](https://www.linkedin.com/in/abdelwahed-akhechane/)
 
 ### [Zakariae Heddaje](https://github.com/zakariaeheddaje)
+
 - Rôle : Développeur Frontend
 - Description : Zakariae a dirigé le développement frontend en utilisant React et diverses bibliothèques pour créer une interface utilisateur moderne et intuitive. Ses compétences en conception ont apporté une touche esthétique à l'application.
 

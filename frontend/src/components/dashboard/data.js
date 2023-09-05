@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import "./data.css";
 import LoginPage from "./loginPage";
-const API_BASE_URL = "http://localhost:5000/api";
+const API_BASE_URL = `${process.env.REACT_APP_SERVER_URL}/api`;
 
 const Header = () => {
   return (
@@ -42,7 +42,7 @@ const DataPage = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(`${API_BASE_URL}/admin/posts/count`);
-      const { Posts, Jobs, Properties, Vehicles, outDatedPosts  } = response.data;
+      const { Posts, Jobs, Properties, Vehicles, outDatedPosts } = response.data;
       setPostCount(Posts);
       setJobs(Jobs);
       setProperties(Properties);

@@ -7,8 +7,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { FiFilter, FiXCircle } from 'react-icons/fi';
 import { GiPositionMarker } from 'react-icons/gi';
 import { BiCategoryAlt } from 'react-icons/bi';
-const API_BASE_URL = "http://localhost:5000/api";
-
+const API_BASE_URL = `${process.env.REACT_APP_SERVER_URL}/api`;
+console.log(API_BASE_URL);
 
 function Search() {
     const [searchQuery, setSearchQuery] = useState("");
@@ -146,7 +146,7 @@ function Search() {
                             src={post.image}
                             className="card-img-top"
                             alt="..."
-                            style={{"objectFit":"cover"}}
+                            style={{ "objectFit": "cover" }}
                             fluid
                             width={300}
                             height={300}
@@ -162,7 +162,7 @@ function Search() {
                                 <GiPositionMarker className="position" />
                                 {post.localisation}</p>
                             <p className="card-text type">
-                                <BiCategoryAlt className="category"/>
+                                <BiCategoryAlt className="category" />
                                 {post.type}
                             </p>
                         </div>
